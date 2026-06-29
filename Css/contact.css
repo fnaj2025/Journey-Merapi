@@ -1,0 +1,89 @@
+/* ============================================================
+   CONTACT PAGE (CONTACT.HTML)
+   ============================================================ */
+
+/* SECTION UTAMA */
+.kontak-section {
+    text-align: center;
+    padding: 120px 20px 80px;
+    background-color: white;
+    color: #222;
+    transition: background-color 0.4s, color 0.4s;
+}
+
+.kontak-section h1 {
+    font-size: 2.3em;
+    margin-bottom: 15px;
+    font-style: italic;
+}
+
+.kontak-section h1 span {
+    color: #ff4444;
+}
+
+.kontak-section p {
+    max-width: 700px;
+    margin: 0 auto 40px;
+    font-size: 1.05em;
+    line-height: 1.6;
+}
+
+/* CONTACT CARD */
+.contact-card {
+    max-width: 600px;
+    margin: 0 auto;
+    background-color: #eeeeee;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.4s, box-shadow 0.4s;
+    text-align: left;
+    border: 1px solid #ddd;
+}
+
+/* FORM */
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    text-align: left;
+}
+
+.contact-form label {
+    font-weight: 600;
+    margin-bottom: 5px;
+}
+
+.contact-form input,
+.contact-form textarea {
+    width: 100%;
+    padding: 10px 15px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    font-size: 1em;
+    resize: none;
+    transition: border-color 0.3s, box-shadow 0.3s, background-color 0.4s, color 0.4s;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+    border-color: #ff4444;
+    box-shadow: 0 0 5px rgba(255, 68, 68, 0.5);
+    outline: none;
+}
+
+/* BUTTON */
+.contact-form button {
+    background-color: #ff4444;
+    color: white;
+    font-weight: 600;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.contact-form button:hover {
+    background-color: #d32f2f;
+}

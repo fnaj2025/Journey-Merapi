@@ -1,0 +1,913 @@
+/* =========================================================
+                        DARK MODE 
+   ========================================================= */
+
+body.dark-mode {
+    /* COLOR PALETTE */
+    --bg-primary: #1e2128;           
+    --bg-secondary: #242830;         
+    --bg-tertiary: #2a2f3a;         
+    --bg-navbar: rgba(30, 33, 40, 0.95);
+    --bg-footer: #1a1d23;
+    
+    --text-primary: #f0f2f5;         
+    --text-secondary: #b8bdc6;       
+    --text-muted: #8a8f9a;          
+    
+    --border-light: #383e4a;         
+    --border-dark: #2d323d;          
+    
+    --accent-red: #ff4757;           
+    --accent-gold: #ffd700;         
+    
+    /* Transisi smooth*/
+    transition: background-color 0.4s ease, color 0.4s ease;
+}
+
+/* =========================================================
+   GLOBAL STYLES
+   ========================================================= */
+
+body.dark-mode {
+    background-color: var(--bg-primary);
+    color: var(--text-primary) !important;
+}
+
+/* text styling konsisten */
+body.dark-mode h1,
+body.dark-mode h2,
+body.dark-mode h3,
+body.dark-mode h4,
+body.dark-mode h5,
+body.dark-mode h6 {
+    color: var(--text-primary) !important;
+}
+
+body.dark-mode p,
+body.dark-mode span:not(.accent),
+body.dark-mode li {
+    color: var(--text-secondary) !important;
+}
+
+body.dark-mode label {
+    color: var(--text-primary) !important;
+    font-weight: 500;
+}
+
+/* =========================================================
+            NAVBAR 
+   ========================================================= */
+
+body.dark-mode .navbar {
+    background: var(--bg-navbar) !important;
+    backdrop-filter: blur(15px) saturate(180%);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* Logo konsisten */
+body.dark-mode .logo span,
+body.dark-mode .logo-about span,
+body.dark-mode .logo-contact span,
+body.dark-mode .logo-order span,
+body.dark-mode .logo-status span,
+body.dark-mode .logo-tour span {
+    color: var(--text-primary) !important;
+    opacity: 0.9;
+}
+
+body.dark-mode .logo b,
+body.dark-mode .logo-about b,
+body.dark-mode .logo-contact b,
+body.dark-mode .logo-order b,
+body.dark-mode .logo-status b,
+body.dark-mode .logo-tour b {
+    color: var(--accent-red) !important;
+}
+
+/* Menu links */
+body.dark-mode .navbar a {
+    color: var(--text-secondary) !important;
+    transition: all 0.3s ease;
+}
+
+body.dark-mode .navbar a:hover,
+body.dark-mode .navbar a.active {
+    color: var(--accent-red) !important;
+    text-shadow: 0 0 15px rgba(255, 71, 87, 0.3);
+}
+
+/* User text */
+body.dark-mode #userName,
+body.dark-mode .user-text {
+    color: var(--text-primary) !important;
+    font-weight: 500;
+}
+
+/* =========================================================
+   DARK/LIGHT MODE TOGGLE BUTTON - OVERRIDE UNTUK DARK MODE
+   ========================================================= */
+
+   /* Light Mode Button */
+body.dark-mode .nav-btns .btn.dark {
+    background: linear-gradient(135deg, #b91d23 0%, #a0181e 100%) !important;
+    color: #ffffff !important;
+    border: 1px solid #c82333 !important;
+    font-weight: 600;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 4px 12px rgba(185, 29, 35, 0.3) !important;
+}
+
+body.dark-mode .nav-btns .btn.dark:hover {
+    background: linear-gradient(135deg, #d32f2f 0%, #b91d23 100%) !important;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(211, 47, 47, 0.4) !important;
+    color: #ffffff !important;
+    border-color: #e53935 !important;
+}
+
+/* Login/Logout buttons */
+body.dark-mode .nav-btns .btn.login,
+body.dark-mode .nav-btns .btn.logout {
+    background: linear-gradient(135deg, #c62828 0%, #b71c1c 100%) !important;
+    color: #ffffff !important;
+    border: none !important;
+    box-shadow: 0 4px 12px rgba(198, 40, 40, 0.3) !important;
+}
+
+body.dark-mode .nav-btns .btn.login:hover,
+body.dark-mode .nav-btns .btn.logout:hover {
+    background: linear-gradient(135deg, #e53935 0%, #d32f2f 100%) !important;
+    color: #ffffff !important;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(229, 57, 53, 0.4) !important;
+}
+
+/* User info */
+body.dark-mode #userName {
+    color: var(--text-primary) !important;
+}
+/* =========================================================
+   HOMEPAGE (index.php)
+   ========================================================= */
+
+body.dark-mode .main-content-bg::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(rgba(30, 33, 40, 0.6), rgba(30, 33, 40, 0.7));
+    opacity: 0.45;
+}
+
+/* Efek glow pada teks untuk meningkatkan keterbacaan */
+body.dark-mode .hero .title{
+    color: var(--text-primary) !important;
+    text-shadow: 0 2px 15px rgba(255, 71, 87, 0.5), 
+                 0 0 5px rgba(57, 50, 50, 0.5),
+                 0 0 30px rgba(255, 71, 87, 0.3) !important;
+    position: relative;
+    z-index: 2;
+}
+
+body.dark-mode .hero .small-text,
+body.dark-mode .hero .desc {
+    color: var(--text-primary) !important;
+    text-shadow: 0 2px 15px rgba(0, 0, 0, 0.8), 
+                 0 0 5px rgba(57, 50, 50, 0.5),
+                 0 0 30px rgba(255, 71, 87, 0.3) !important;
+    position: relative;
+    z-index: 2;
+}
+
+body.dark-mode .hero .title span {
+    color: var(--accent-red) !important;
+    text-shadow: 0 2px 10px rgba(213, 41, 56, 0.5),
+                 0 0 20px rgba(255, 71, 87, 0.3) !important;
+}
+
+/* Action button */
+body.dark-mode .btn.action {
+    background: var(--accent-red);
+    color: white !important;
+}
+
+body.dark-mode .btn.action:hover {
+    background: #ff2e43;
+}
+
+/* Facta Section */
+body.dark-mode .facta-section {
+    background: var(--bg-secondary) !important;
+    padding: 60px 20px;
+}
+
+body.dark-mode .facta-section h2 {
+    color: var(--text-primary) !important;
+}
+
+body.dark-mode .facta-section h2 span {
+    color: var(--accent-red) !important;
+}
+
+/* Cards - Glassmorphism Effect */
+body.dark-mode .card {
+    background: rgba(36, 40, 48, 0.7) !important;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.08) !important;
+    color: var(--text-secondary) !important;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+body.dark-mode .card h3 {
+    color: var(--text-primary) !important;
+}
+
+body.dark-mode .card:hover {
+    background: rgba(36, 40, 48, 0.9) !important;
+    border-color: var(--accent-red) !important;
+    transform: translateY(-8px);
+    box-shadow: 0 12px 40px rgba(255, 71, 87, 0.15);
+}
+
+/* =========================================================
+   ABOUT PAGE
+   ========================================================= */
+
+body.dark-mode .about-section,
+body.dark-mode .wisata-merapi {
+    background: var(--bg-primary) !important;
+}
+
+body.dark-mode .about-section h2,
+body.dark-mode .wisata-merapi h1 {
+    color: var(--accent-red) !important;
+}
+
+body.dark-mode .about-section .text,
+body.dark-mode .wisata-merapi p {
+    color: var(--text-secondary) !important;
+}
+
+/* Image grid */
+body.dark-mode .img-grid img {
+    border: 2px solid var(--border-light);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease;
+}
+
+body.dark-mode .img-grid img:hover {
+    border-color: hsla(0, 58%, 42%, 0.84);
+    transform: scale(1.02);
+    /* transform: translateY(-8px); */
+    background: #353535;
+    box-shadow: 0 8px 25px rgba(240, 57, 61, 0.3);
+}
+
+/* Wisata Cards */
+body.dark-mode .wisata-card {
+    background: var(--bg-secondary) !important;
+    border: 1px solid var(--border-light);
+    color: var(--text-secondary) !important;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+}
+
+body.dark-mode .wisata-card h3 {
+    color: var(--accent-red) !important;
+}
+
+body.dark-mode .wisata-card:hover {
+    background: var(--bg-tertiary) !important;
+    border-color: var(--accent-red);
+    box-shadow: 0 10px 30px rgba(255, 71, 87, 0.2);
+}
+
+body.dark-mode .wisata-card .location {
+    color: var(--text-muted) !important;
+}
+
+body.dark-mode .rating {
+    color: var(--accent-gold) !important;
+}
+
+/* =========================================================
+   TOUR PAGE
+   ========================================================= */
+
+body.dark-mode .main-content-bg::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(rgba(30, 33, 40, 0.6), rgba(30, 33, 40, 0.7));
+    opacity: 0.45;
+}
+
+/* Kontainer untuk konten di atas background */
+body.dark-mode .main-tour-bg .container {
+    position: relative;
+    z-index: 2;
+}
+
+body.dark-mode .hero-tour {
+    color: var(--text-primary) !important;
+    text-shadow: 0 2px 15px rgba(0, 0, 0, 0.8),
+                 0 0 5px rgba(0, 0, 0, 0.5),
+                 0 0 30px rgba(255, 71, 87, 0.3) !important;
+    position: relative;
+    z-index: 2;
+}
+
+body.dark-mode .hero-tour span {
+    color: var(--accent-red) !important;
+    text-shadow: 0 2px 10px rgba(167, 32, 43, 0.5),
+                 0 0 20px rgba(255, 71, 87, 0.3) !important;
+}
+
+/* Tour Cards */
+body.dark-mode .card-tour {
+    background: var(--bg-secondary) !important;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+}
+
+body.dark-mode .card-tour h3 {
+    color: var(--text-primary) !important;
+}
+
+body.dark-mode .card-tour p {
+    color: var(--text-secondary) !important;
+}
+
+body.dark-mode .card-tour .price {
+    color: var(--accent-red) !important;
+    font-weight: 600;
+}
+
+body.dark-mode .card-tour .info p {
+    color: var(--text-muted) !important;
+}
+
+body.dark-mode .card-tour:hover {
+    background: var(--bg-tertiary) !important;
+    border-color: var(--accent-red) !important;
+    box-shadow: 0 10px 30px rgba(227, 38, 54, 0.25);
+    transform: translateY(-5px);
+}
+
+/* Pesan button */
+body.dark-mode .btn.pesan {
+    background: var(--accent-red);
+    color: white !important;
+    border: none;
+}
+
+body.dark-mode .btn.pesan:hover {
+    background: #ff2e43;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(255, 71, 87, 0.3);
+}
+
+/* =========================================================
+   ORDER PAGE
+   ========================================================= */
+
+body.dark-mode .order-section {
+    background: var(--bg-primary) !important;
+}
+
+body.dark-mode .container {
+    background: var(--bg-secondary) !important;
+    border: 1px solid var(--border-light) !important;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.25);
+}
+
+body.dark-mode .order-section h1,
+body.dark-mode .order-section h2,
+body.dark-mode .order-section h3,
+body.dark-mode .section-title {
+    color: var(--text-primary) !important;
+}
+
+body.dark-mode .order-section h1 span {
+    color: var(--accent-red) !important;
+}
+
+body.dark-mode .order-section p {
+    color: var(--text-secondary) !important;
+}
+
+/* Tour Options */
+body.dark-mode .tour-option {
+    background: rgba(255, 255, 255, 0.02);
+    border-radius: 8px;
+    padding: 12px 15px;
+    transition: all 0.2s;
+    border: 1px solid transparent;
+}
+
+body.dark-mode .tour-option:hover {
+    background: rgba(255, 255, 255, 0.05);
+    border-color: var(--border-light);
+}
+
+body.dark-mode .tour-option label {
+    color: var(--text-primary) !important;
+}
+
+body.dark-mode .tour-price {
+    color: var(--accent-red) !important;
+}
+
+/* Selected Tours Box */
+body.dark-mode .selected-tours {
+    background: var(--bg-tertiary) !important;
+    border-left: 4px solid var(--accent-red) !important;
+    border-radius: 8px;
+    padding: 20px;
+}
+
+body.dark-mode .selected-tours h3 {
+    color: var(--text-primary) !important;
+    border-bottom: 1px solid var(--border-light);
+    padding-bottom: 10px;
+    margin-bottom: 15px;
+}
+
+body.dark-mode .selected-tour-item {
+    color: var(--text-primary) !important;
+    border-bottom: 1px solid var(--border-light) !important;
+    padding: 10px 0;
+}
+
+body.dark-mode .total-price {
+    border-top: 2px solid var(--border-light);
+    color: var(--text-primary) !important;
+    font-size: 18px;
+    font-weight: 600;
+    padding-top: 15px;
+}
+
+/* My Orders Button */
+body.dark-mode .btn-myorders {
+    background: var(--accent-red);
+    color: white !important;
+    box-shadow: 0 4px 12px rgba(255, 71, 87, 0.2);
+}
+
+body.dark-mode .btn-myorders:hover {
+    background: white;
+    color: var(--accent-red) !important;
+    box-shadow: 0 6px 20px rgba(255, 71, 87, 0.3);
+}
+
+/* Reserve Button */
+body.dark-mode .btn-reserve {
+    background: var(--accent-red);
+    color: white !important;
+    border: none;
+    box-shadow: 0 4px 15px rgba(255, 71, 87, 0.2);
+}
+
+body.dark-mode .btn-reserve:hover {
+    background: #ff2e43;
+    transform: translateY(-3px);
+    box-shadow: 0 6px 25px rgba(255, 71, 87, 0.3);
+}
+
+/* =========================================================
+   FORM INPUTS - KONSISTEN DI SEMUA HALAMAN
+   ========================================================= */
+
+body.dark-mode input,
+body.dark-mode textarea,
+body.dark-mode select {
+    background: var(--bg-tertiary) !important;
+    color: var(--text-primary) !important;
+    border: 1.5px solid var(--border-light) !important;
+    border-radius: 8px !important;
+    padding: 12px 15px !important;
+    font-family: 'Poppins', sans-serif;
+    font-size: 15px;
+    transition: all 0.3s ease;
+}
+
+body.dark-mode input:focus,
+body.dark-mode textarea:focus,
+body.dark-mode select:focus {
+    border-color: var(--accent-red) !important;
+    background: #313744 !important;
+    box-shadow: 0 0 0 3px rgba(255, 71, 87, 0.1) !important;
+    outline: none;
+}
+
+body.dark-mode input::placeholder,
+body.dark-mode textarea::placeholder {
+    color: var(--text-muted) !important;
+    opacity: 0.7;
+}
+
+body.dark-mode select option {
+    background: var(--bg-tertiary) !important;
+    color: var(--text-primary) !important;
+    padding: 10px;
+}
+
+/* =========================================================
+   CONTACT PAGE
+   ========================================================= */
+
+body.dark-mode .kontak-section {
+    background: var(--bg-primary) !important;
+}
+
+body.dark-mode .kontak-section h1 {
+    color: var(--text-primary) !important;
+}
+
+body.dark-mode .kontak-section h1 span {
+    color: var(--accent-red) !important;
+}
+
+body.dark-mode .kontak-section p {
+    color: var(--text-secondary) !important;
+}
+
+body.dark-mode .contact-card {
+    background: var(--bg-secondary) !important;
+    border: 1px solid var(--border-light);
+    color: var(--text-primary) !important;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+}
+
+/* Contact form button */
+body.dark-mode .contact-form button {
+    background: var(--accent-red);
+    color: white !important;
+    border: none;
+}
+
+body.dark-mode .contact-form button:hover {
+    background: #ff2e43;
+}
+
+/* =========================================================
+   STATUS PAGE
+   ========================================================= */
+
+body.dark-mode .status-container {
+    background: var(--bg-primary) !important;
+    color: var(--text-primary) !important;
+}
+
+body.dark-mode .status-container h1 {
+    color: var(--text-primary) !important;
+}
+
+body.dark-mode .status-box {
+    background: var(--bg-secondary) !important;
+    border: 2px solid var(--border-light) !important;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.25) !important;
+}
+
+body.dark-mode .status-box .desc {
+    color: var(--text-secondary) !important;
+}
+
+body.dark-mode .status-box .rek {
+    background: rgba(255, 71, 87, 0.08) !important;
+    border-left: 4px solid var(--accent-red) !important;
+    color: var(--text-secondary) !important;
+}
+
+body.dark-mode .status-box h3 {
+    color: var(--text-primary) !important;
+    border-bottom: 1px solid var(--border-light) !important;
+}
+
+body.dark-mode .status-box small {
+    color: var(--text-muted) !important;
+}
+
+/* Level badges */
+body.dark-mode .level.normal {
+    background: rgba(46, 204, 113, 0.1);
+    color: #2ecc71;
+    border: 2px solid #2ecc71;
+}
+
+body.dark-mode .level.waspada {
+    background: rgba(241, 196, 15, 0.1);
+    color: #f1c40f;
+    border: 2px solid #f1c40f;
+}
+
+body.dark-mode .level.siaga {
+    background: rgba(230, 126, 34, 0.1);
+    color: #e67e22;
+    border: 2px solid #e67e22;
+}
+
+body.dark-mode .level.awas {
+    background: rgba(231, 76, 60, 0.1);
+    color: #e74c3c;
+    border: 2px solid #e74c3c;
+}
+
+/* =========================================================
+   MY ORDER PAGE - DITAMBAHKAN STYLING LENGKAP
+   ========================================================= */
+
+body.dark-mode .my-order-page {
+    background: var(--bg-primary) !important;
+}
+
+body.dark-mode h1 {
+    background: linear-gradient(135deg, var(--accent-red) 0%, #ff2e43 100%) !important;
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+    background-clip: text !important;
+}
+
+body.dark-mode .back-btn {
+    color: var(--accent-red) !important;
+}
+
+body.dark-mode .back-btn:hover {
+    color: #ff2e43 !important;
+    text-decoration: underline;
+}
+
+body.dark-mode .order-card {
+    background: var(--bg-secondary) !important;
+    border: 1px solid var(--border-light) !important;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2) !important;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+body.dark-mode .order-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 40px rgba(255, 71, 87, 0.15) !important;
+    border-color: var(--accent-red) !important;
+}
+
+body.dark-mode .order-header {
+    color: var(--text-primary) !important;
+}
+
+body.dark-mode .order-info {
+    color: var(--text-secondary) !important;
+}
+
+body.dark-mode .order-info b {
+    color: var(--text-primary) !important;
+}
+
+/* Status badges */
+body.dark-mode .status {
+    border: 1px solid;
+    background: transparent !important;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+
+body.dark-mode .status.pending {
+    color: #ffc107 !important;
+    border-color: #ffc107 !important;
+    background: rgba(255, 193, 7, 0.1) !important;
+}
+
+body.dark-mode .status.process {
+    color: #03a9f4 !important;
+    border-color: #03a9f4 !important;
+    background: rgba(3, 169, 244, 0.1) !important;
+}
+
+body.dark-mode .status.done {
+    color: #4caf50 !important;
+    border-color: #4caf50 !important;
+    background: rgba(76, 175, 80, 0.1) !important;
+}
+
+/* Action buttons */
+body.dark-mode .btn-detail {
+    background: #007bff;
+    border: none;
+}
+
+body.dark-mode .btn-detail:hover {
+    background: #005fcc;
+}
+
+body.dark-mode .btn-invoice {
+    background: #28c76f;
+    border: none;
+}
+
+body.dark-mode .btn-invoice:hover {
+    background: #1fa85a;
+}
+
+body.dark-mode .btn-disabled {
+    background: var(--text-muted) !important;
+    color: var(--bg-secondary) !important;
+    cursor: not-allowed;
+}
+
+/* Modal di my_order */
+body.dark-mode .modal {
+    background: rgba(0, 0, 0, 0.85);
+}
+
+body.dark-mode .modal-box {
+    background: var(--bg-secondary) !important;
+    border: 1px solid var(--border-light);
+    box-shadow: 0 15px 50px rgba(0, 0, 0, 0.5);
+}
+
+body.dark-mode .modal-box h3 {
+    color: var(--text-primary) !important;
+}
+
+body.dark-mode .modal-box #detailBody {
+    color: var(--text-secondary) !important;
+    line-height: 1.6;
+}
+
+body.dark-mode .close-btn {
+    background: var(--accent-red);
+    color: white !important;
+    border: none;
+    margin-top: 20px;
+}
+
+body.dark-mode .close-btn:hover {
+    background: #ff2e43;
+}
+
+/* =========================================================
+   MODAL LOGIN & REGISTER - IMPROVED CONTRAST
+   ========================================================= */
+
+body.dark-mode .modal-overlay {
+    background: rgba(0, 0, 0, 0.9) !important;
+    backdrop-filter: blur(5px);
+}
+
+body.dark-mode .modal-content {
+    background: var(--bg-secondary) !important;
+    border: 1px solid var(--border-light) !important;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6) !important;
+}
+
+body.dark-mode .modal-content h2 {
+    color: var(--text-primary) !important;
+}
+
+body.dark-mode .modal-content h2 span {
+    color: var(--accent-red) !important;
+}
+
+body.dark-mode .modal-content .close-btn {
+    color: var(--text-primary) !important;
+    background: transparent;
+    font-size: 28px;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+body.dark-mode .modal-content .close-btn:hover {
+    color: var(--accent-red) !important;
+    background: rgba(255, 71, 87, 0.1);
+}
+
+/* Form inputs dalam modal */
+body.dark-mode .modal-content .form-group input {
+    background: var(--bg-tertiary) !important;
+    color: var(--text-primary) !important;
+    border: 1.5px solid var(--border-light) !important;
+    padding: 14px 16px !important;
+    font-size: 15px;
+}
+
+body.dark-mode .modal-content .form-group input:focus {
+    border-color: var(--accent-red) !important;
+    background: #313744 !important;
+    box-shadow: 0 0 0 3px rgba(255, 71, 87, 0.15) !important;
+}
+
+body.dark-mode .modal-content .form-group input::placeholder {
+    color: var(--text-muted) !important;
+}
+
+/* Submit button */
+body.dark-mode .modal-content .submit-btn {
+    background: var(--accent-red) !important;
+    color: white !important;
+    border: none;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    padding: 14px;
+    transition: all 0.3s ease;
+}
+
+body.dark-mode .modal-content .submit-btn:hover {
+    background: #ff2e43 !important;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(255, 71, 87, 0.3);
+}
+
+/* Form footer links */
+body.dark-mode .modal-content .form-footer {
+    color: var(--text-muted) !important;
+    font-size: 14px;
+}
+
+body.dark-mode .modal-content .form-footer a {
+    color: var(--accent-red) !important;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+body.dark-mode .modal-content .form-footer a:hover {
+    text-decoration: underline;
+}
+
+/* =========================================================
+   FOOTER - KONSISTEN
+   ========================================================= */
+
+body.dark-mode .footer-merapi,
+body.dark-mode footer {
+    background: var(--bg-footer) !important;
+    color: var(--text-secondary) !important;
+    border-top: 1px solid var(--border-light);
+}
+
+body.dark-mode .footer-merapi h3 {
+    color: var(--accent-red) !important;
+}
+
+body.dark-mode .footer-merapi p,
+body.dark-mode .footer-merapi a,
+body.dark-mode .footer-merapi .copyright {
+    color: var(--text-secondary) !important;
+    transition: color 0.3s ease;
+}
+
+body.dark-mode .footer-merapi a:hover {
+    color: var(--accent-red) !important;
+}
+
+/* =========================================================
+   SCROLL BAR - ELEGAN
+   ========================================================= */
+
+body.dark-mode::-webkit-scrollbar {
+    width: 10px;
+}
+
+body.dark-mode::-webkit-scrollbar-track {
+    background: var(--bg-primary);
+}
+
+body.dark-mode::-webkit-scrollbar-thumb {
+    background: var(--border-light);
+    border-radius: 5px;
+    border: 2px solid var(--bg-primary);
+}
+
+body.dark-mode::-webkit-scrollbar-thumb:hover {
+    background: var(--accent-red);
+    opacity: 0.8;
+}
+
+/* =========================================================
+   UTILITY CLASSES
+   ========================================================= */
+
+body.dark-mode hr {
+    border-color: var(--border-light) !important;
+    opacity: 0.3;
+}
+
+body.dark-mode .no-selection {
+    color: var(--text-muted) !important;
+    font-style: italic;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    body.dark-mode .modal-content {
+        width: 90% !important;
+        margin: 20px !important;
+    }
+    
+    body.dark-mode .container {
+        padding: 20px !important;
+    }
+}

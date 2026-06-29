@@ -1,0 +1,237 @@
+/* ============================================================
+   ABOUT PAGE (ABOUT.HTML)
+   ============================================================ */
+
+/* WRAPPER UTAMA */
+.about-section {
+    padding: 80px 60px;
+}
+
+/* ROW UTAMA (TEXT + IMAGE) */
+.main-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 60px;
+}
+
+/* KIRI — TEXT SECTION */
+.left-col {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+    padding-top: 80px;
+}
+
+.about-section h2 {
+    text-align: left;
+    margin-bottom: 15px;
+    font-size: 30px;
+    font-weight: 700;
+}
+
+.about-section h2 span {
+    color: var(--red);
+}
+
+.text {
+    width: 100%;
+    line-height: 25px;
+    text-align: justify;
+    font-size: 15px;
+    color: var(--text);
+}
+
+/* KANAN — GRID GAMBAR */
+.right-col {
+    width: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: 50px;
+}
+
+.img-grid {
+    display: grid;
+    grid-template-columns: auto auto;
+    grid-template-rows: auto auto;
+    gap: 15px;
+    justify-content: center;
+    align-items: center;
+    width: fit-content;
+}
+
+.img-grid img {
+    border-radius: 10px;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Hover Effect */
+.img-grid img:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 8px 25px rgba(58,44,44,0.3);
+}
+
+/* POSISI SETIAP GAMBAR */
+
+/* 1 — kanan atas */
+.img-grid img:nth-child(1) {
+    grid-row: 1;
+    grid-column: 2;
+    width: 350px;
+    height: 300px;
+}
+
+/* 2 — kiri atas */
+.img-grid img:nth-child(2) {
+    grid-row: 1;
+    grid-column: 1;
+    width: 300px;
+    height: 250px;
+    align-self: end;
+    justify-self: end;
+}
+
+/* 3 — kiri bawah */
+.img-grid img:nth-child(3) {
+    grid-row: 2;
+    grid-column: 1;
+    width: 250px;
+    height: 200px;
+    align-self: start;
+    justify-self: end;
+}
+
+/* 4 — kanan bawah */
+.img-grid img:nth-child(4) {
+    grid-row: 2;
+    grid-column: 2;
+    width: 300px;
+    height: 250px;
+    align-self: start;
+    justify-self: start;
+}
+
+/* ============================================================
+   DESTINASI WISATA MERAPI — FIXED VERSION
+   ============================================================ */
+
+.wisata-merapi {
+    text-align: center;
+    padding: 100px 60px;
+    background-color: #fff;
+}
+
+.wisata-merapi h1 {
+    font-size: 2.3em;
+    color: #111;
+    margin-bottom: 20px;
+}
+
+.wisata-merapi h1 span {
+    color: var(--red);
+}
+
+.wisata-merapi p {
+    font-size: 1.1em;
+    color: #444;
+    margin-bottom: 50px;
+}
+
+/* GRID FIXED — 3 kolom atas + 1 card di tengah bawah */
+.grid-wisata {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 35px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* STYLE CARD */
+.wisata-card {
+    background-color: #d9d9d9;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+/* Hover effect */
+.wisata-card:hover {
+    transform: translateY(-8px);
+    background-color: #f3f2f2;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+}
+
+.wisata-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 6px;
+    margin-bottom: 15px;
+}
+
+.wisata-card h3 {
+    color: var(--red);
+    font-size: 1.3em;
+    margin-bottom: 10px;
+}
+
+.wisata-card p {
+    font-size: 1em;
+    color: #333;
+    line-height: 1.6;
+}
+
+/* CARD KE-4 TURUN KE TENGAH */
+.wisata-card:nth-child(4) {
+    grid-column: 1 / span 1;   
+}
+
+.wisata-card .location {
+    font-size: 13px;
+    color: #777;
+    margin-top: -5px;
+    margin-bottom: 10px;
+}
+body.dark-mode .wisata-card .location {
+    color: #cfcfcf !important;
+}
+
+.rating {
+    font-size: 16px;
+    color: #ffcc00; /* warna emas */
+    margin-bottom: 8px;
+    font-weight: bold;
+    letter-spacing: 2px;
+}
+
+/* Dark mode tetap emas */
+body.dark-mode .rating {
+    color: #ffdd55 !important;
+}
+
+/* RESPONSIVE FIX */
+@media (max-width: 900px) {
+    .grid-wisata {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .wisata-card:nth-child(4) {
+        grid-column: span 2;
+    }
+}
+
+@media (max-width: 600px) {
+    .grid-wisata {
+        grid-template-columns: 1fr;
+    }
+
+    .wisata-card:nth-child(4) {
+        grid-column: span 1;
+    }
+}

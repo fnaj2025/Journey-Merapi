@@ -1,0 +1,203 @@
+/* =======================================================
+   NAVBAR – GLOBAL SETUP
+======================================================= */
+
+.navbar ul {
+    list-style: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 60px;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    background: var(--navbar-bg);
+}
+
+/* =======================================================
+   LOGO STYLE
+======================================================= */
+.logo,
+.logo-about,
+.logo-contact,
+.logo-order,
+.logo-status {
+    font-size: 26px;
+    font-weight: 700;
+}
+
+.logo span { color: #eee; }
+.logo b { color: var(--red); }
+
+.logo-about span,
+.logo-contact span,
+.logo-order span,
+.logo-status span {
+    color: #adaf9c;
+}
+
+.logo-about b,
+.logo-contact b,
+.logo-order b,
+.logo-status b {
+    color: var(--red);
+}
+
+/* =======================================================
+   MENU STYLE 
+======================================================= */
+.menu,
+.menu-about,
+.menu-contact,
+.menu-order,
+.menu-status {
+    display: flex;
+    gap: 30px;
+    list-style: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+.menu a,
+.menu-about a,
+.menu-contact a,
+.menu-order a,
+.menu-status a {
+    text-decoration: none !important;
+    font-weight: 500;
+    position: relative;
+    transition: 0.25s;
+}
+
+/* INDEX PAGE MENU COLOR */
+.menu a {
+    color: #eee;
+}
+
+/* OTHER PAGE MENU COLOR */
+.menu-about a,
+.menu-contact a,
+.menu-order a,
+.menu-status a {
+    color: #adaf9c;
+}
+
+/* HOVER & ACTIVE EFFECT */
+.menu a:hover,
+.menu a.active,
+.menu-about a:hover,
+.menu-about a.active,
+.menu-contact a:hover,
+.menu-contact a.active,
+.menu-order a:hover,
+.menu-order a.active,
+.menu-status a:hover,
+.menu-status a.active {
+    color: var(--red) !important;
+}
+
+.menu a::after,
+.menu-about a::after,
+.menu-contact a::after,
+.menu-order a::after,
+.menu-status a::after {
+    content: none !important;
+}
+
+/* =======================================================
+   NAVBAR SCROLL EFFECT
+======================================================= */
+.navbar.scrolled {
+    background: rgba(0,0,0,0.78);
+    backdrop-filter: blur(6px);
+    box-shadow: 0 3px 15px rgba(0,0,0,0.2);
+    padding: 10px 0 !important;
+}
+
+
+/* ========================================================
+   BUTTON STYLES - SEMUA TOMBOL DI NAVBAR
+======================================================== */
+
+/* TOMBOL DARK MODE */
+.nav-btns .btn.dark {
+    background: linear-gradient(135deg, #6c757d 0%, #5a6268 100%) !important;
+    color: #ffffff !important;
+    border: 1px solid rgba(255, 255, 255, 0.2) !important;
+    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.15) !important;
+    font-weight: 600;
+}
+
+.nav-btns .btn.dark:hover {
+    background: linear-gradient(135deg, #868e96 0%, #6c757d 100%) !important;
+    color: #ffffff !important;
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25) !important;
+    border-color: rgba(255, 255, 255, 0.3) !important;
+}
+
+/* TOMBOL LOGIN/LOGOUT */
+.nav-btns .btn.login,
+.nav-btns .btn.logout {
+    background: linear-gradient(135deg, #ff4757 0%, #f0393d 100%) !important;
+    color: #ffffff !important;
+    border: none !important;
+    box-shadow: 0 3px 12px rgba(240, 57, 61, 0.2) !important;
+    font-weight: 600;
+}
+
+.nav-btns .btn.login:hover,
+.nav-btns .btn.logout:hover {
+    background: linear-gradient(135deg, #ff4757 0%, #f0393d 100%) !important;
+    color: #ffffff !important;
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 6px 20px rgba(240, 57, 61, 0.4) !important;
+}
+
+/* User info styling */
+#userName {
+    color: #333 !important;
+    font-weight: 500;
+    margin-right: 10px;
+}
+
+/* ORDER NOW  */
+.order-history-wrap {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+/* ICON HISTORY */
+.history-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: #3498db;
+    color: white !important;
+    padding: 6px 10px;
+    border-radius: 6px;
+    font-size: 15px;
+    text-decoration: none;
+    transition: 0.2s ease-in-out;
+}
+
+.history-icon:hover {
+    background: #2b7bb8;
+    transform: scale(1.07);
+}
+
+/* DARK MODE SUPPORT */
+.dark-mode .history-icon {
+    background: #1e6fa8;
+}
+
+.dark-mode .history-icon:hover {
+    background: #15527c;
+}

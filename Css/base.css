@@ -1,0 +1,70 @@
+/* RESET & GLOBAL */
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Poppins, sans-serif;
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+img, button, .btn {
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+}
+
+/* ROOT VARIABLES */
+:root{
+    --red:#f0393d;
+    --bg:#fff;
+    --text:#333;
+    --card-bg:#fff;
+    --dark-bg-text: #1d3d53;
+    --navbar-bg:transparent;
+    --footer-bg:#d9d9d9;
+    --input-bg:#fff;
+    --input-border:#ddd;
+    --shadow:rgba(0, 0, 0, 0.1);
+}
+
+/* BODY */
+body{
+    background:var(--bg);
+    color:var(--text);
+}
+
+/* BUTTON BASE */
+.btn{
+    padding:10px 20px;
+    border-radius:30px;
+    border:none;
+    cursor:pointer;
+    font-size:15px;
+    font-weight:500;
+}
+
+/* ACTION BUTTON (Hero CTA) */
+.action{
+    background: linear-gradient(135deg, var(--red) 0%, #e02428 100%);
+    color: #ffffff !important;
+    padding:10px 30px;
+    margin-left:150px;
+    border-radius:30px;
+    text-decoration:none;
+    display:inline-block;
+    box-shadow: 0 4px 15px rgba(240, 57, 61, 0.25);
+    transition: all 0.3s ease;
+}
+
+.action:hover {
+    background: linear-gradient(135deg, #ff4757 0%, #f0393d 100%);
+    color: #ffffff !important;
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 6px 20px rgba(240, 57, 61, 0.4);
+}
+
+
+
+/* LINK */
+a{
+    cursor:pointer;
+    pointer-events:auto;
+}

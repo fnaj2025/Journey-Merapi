@@ -1,0 +1,178 @@
+/* ============================================================
+   MODAL LOGIN & REGISTER
+   ============================================================ */
+
+/* Overlay */
+.modal-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.6);
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    opacity: 0;
+    transition: opacity .25s ease;
+}
+
+.modal-overlay.active {
+    display: flex;
+    opacity: 1;
+}
+
+/* Modal Box */
+.modal-content {
+    background: #ffffff !important;
+    width: 380px;
+    padding: 35px 30px;
+    border-radius: 20px;
+    position: relative;
+    box-shadow: 0 10px 35px rgba(0,0,0,0.25);
+    font-family: Poppins, sans-serif !important;
+    transform: translateY(0) !important;
+}
+
+/* Title */
+.modal-content h2 {
+    font-size: 28px !important;
+    font-weight: 700 !important;
+    color: #333 !important;
+    text-align: center;
+    margin-bottom: 10px !important;
+}
+
+.modal-content h2 span {
+    color: #f0393d !important;
+}
+
+/* Close Button */
+.modal-content .close-btn {
+    position: absolute;
+    right: 22px !important;
+    top: 20px !important;
+    background: none;
+    border: none;
+    font-size: 26px !important;
+    color: #333 !important;
+    cursor: pointer;
+    z-index: 50;
+}
+
+.modal-content .close-btn:hover {
+    color: #f0393d !important;
+}
+
+/* Form Group */
+.modal-content .form-group {
+    margin-bottom: 18px;
+    position: relative;
+}
+
+.modal-content .form-group label {
+    font-size: 14px !important;
+    font-weight: 600 !important;
+    margin-bottom: 6px !important;
+    display: block;
+    color: #333 !important;
+}
+
+/* Input */
+.modal-content .form-group input {
+    width: 100%;
+    padding: 13px 15px !important;
+    border-radius: 10px !important;
+    border: 1px solid #ddd !important;
+    background: #fff !important;
+    font-size: 15px !important;
+    color: #333 !important;
+}
+
+.modal-content .form-group input[type="password"],
+.modal-content .form-group input[type="text"] {
+    padding-right: 45px !important;
+}
+
+.modal-content .form-group input:focus {
+    border-color: #f0393d !important;
+    outline: none;
+}
+
+.modal-content .form-group input::placeholder {
+    color: #999 !important;
+}
+
+/* ============================================================
+   ICON MATA (EYE)
+   ============================================================ */
+
+/* Mata Terbuka (Default) */
+.modal-content .toggle-password {
+    position: absolute;
+    right: 15px !important;
+    top: 43px !important;
+    width: 22px;
+    height: 22px;
+    cursor: pointer;
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: 10;
+    transition: all 0.2s ease;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23666' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z'%3E%3C/path%3E%3Ccircle cx='12' cy='12' r='3'%3E%3C/circle%3E%3C/svg%3E");
+}
+
+/* Hover Mata Terbuka */
+.modal-content .toggle-password:hover {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23f0393d' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z'%3E%3C/path%3E%3Ccircle cx='12' cy='12' r='3'%3E%3C/circle%3E%3C/svg%3E");
+}
+
+/* Mata Tertutup */
+.modal-content .toggle-password.hide {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23666' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24'%3E%3C/path%3E%3Cline x1='1' y1='1' x2='23' y2='23'%3E%3C/line%3E%3C/svg%3E");
+}
+
+/* Hover Mata Tertutup */
+.modal-content .toggle-password.hide:hover {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23f0393d' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24'%3E%3C/path%3E%3Cline x1='1' y1='1' x2='23' y2='23'%3E%3C/line%3E%3C/svg%3E");
+}
+
+/* Submit Button */
+.modal-content .submit-btn {
+    width: 100% !important;
+    padding: 14px !important;
+    background: #f03737 !important;
+    border-radius: 30px !important;
+    border: none !important;
+    color: #fff !important;
+    font-size: 17px !important;
+    font-weight: 600 !important;
+    cursor: pointer;
+    margin-top: 8px !important;
+    transition: all 0.3s ease;
+}
+
+.modal-content .submit-btn:hover {
+    background: #d82f2f !important;
+    transform: scale(1.02);
+}
+
+/* Footer Text */
+.modal-content .form-footer {
+    text-align: center !important;
+    margin-top: 15px !important;
+    font-size: 14px !important;
+    color: #666 !important;
+}
+
+.modal-content .form-footer a {
+    color: #f0393d !important;
+    font-weight: 600 !important;
+    text-decoration: none;
+}
+
+.modal-content .form-footer a:hover {
+    text-decoration: underline;
+}

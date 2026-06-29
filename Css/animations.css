@@ -1,0 +1,72 @@
+/* ============================================================
+   ANIMATIONS — Fade Up, Reveal, Page Transition
+   ============================================================ */
+
+ /* --------------------------------------------
+    FADE UP ANIMATIONS (INDEX HERO)
+ --------------------------------------------- */
+.fade-up {
+    opacity: 0;
+    transform: translateY(25px);
+    animation: fadeUp .9s ease-out forwards;
+}
+
+.fade-up-delay {
+    opacity: 0;
+    transform: translateY(25px);
+    animation: fadeUp .9s ease-out forwards;
+    animation-delay: .3s;
+}
+
+.fade-up-delay2 {
+    opacity: 0;
+    transform: translateY(25px);
+    animation: fadeUp .9s ease-out forwards;
+    animation-delay: .6s;
+}
+
+.fade-up-delay3 {
+    opacity: 0;
+    transform: translateY(25px);
+    animation: fadeUp .9s ease-out forwards;
+    animation-delay: .9s;
+}
+
+/* Keyframes FadeUp */
+@keyframes fadeUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* --------------------------------------------
+   SCROLL REVEAL (Cards / Section)
+ --------------------------------------------- */
+.reveal {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: all .8s ease;
+}
+
+.reveal.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Fix hover scaling even after reveal */
+.card.show:hover {
+    transform: translateY(0) scale(1.05);
+}
+
+/* --------------------------------------------
+   PAGE TRANSITION (Fade In / Fade Out)
+ --------------------------------------------- */
+.page-transition {
+    opacity: 0;
+    transition: opacity .45s ease;
+}
+
+.page-loaded {
+    opacity: 1 !important;
+}

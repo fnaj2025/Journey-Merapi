@@ -1,0 +1,1469 @@
+/* ============================================================================
+   RESPONSIVE DESIGN - JOURNEYMERAPI (MERGED & FIXED VERSION)
+   Instruksi: Ganti file responsive.css yang lama dengan file ini
+   ============================================================================ */
+
+/* ============================================================================
+   BREAKPOINT STRATEGY
+   - Mobile: 320px - 767px
+   - Tablet: 768px - 1023px  
+   - Desktop: 1024px+
+   ============================================================================ */
+
+/* ============================================================================
+   CRITICAL FIX: Hapus min-width paksa yang rusak mobile experience
+   ============================================================================ */
+@media (max-width: 1199px) {
+    body {
+        min-width: 100% !important;
+        overflow-x: hidden !important;
+    }
+}
+
+/* ============================================================================
+   ADMIN PANEL - RESPONSIVE SIDEBAR & CONTENT
+   File: dashboard_admin.php, kelola_*.php
+   ============================================================================ */
+
+/* TABLET & BELOW: Sidebar jadi overlay hamburger */
+@media (max-width: 1023px) {
+    /* Sidebar tersembunyi default */
+    .sidebar {
+        position: fixed;
+        left: -280px;
+        width: 250px;
+        height: 100vh;
+        z-index: 10000;
+        transition: left 0.3s ease;
+        box-shadow: 2px 0 15px rgba(0,0,0,0.3);
+    }
+    
+    .sidebar.active {
+        left: 0;
+    }
+    
+    /* Overlay backdrop saat sidebar terbuka */
+    .sidebar-backdrop {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0,0,0,0.5);
+        z-index: 9999;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+    }
+    
+    .sidebar-backdrop.active {
+        display: block;
+        opacity: 1;
+    }
+    
+    /* Content mengambil full width */
+    .content {
+        margin-left: 0 !important;
+        padding: 80px 20px 40px !important;
+        min-width: 100% !important;
+    }
+    
+    /* 🆕 Hamburger menu button - FIXED POSITION */
+    .hamburger-menu {
+        display: block !important;
+        position: fixed;
+        top: 18px !important; /* PERBAIKAN: posisi lebih rapi */
+        left: 18px !important;
+        z-index: 10001;
+        width: 45px;
+        height: 45px;
+        background: #2c3e50;
+        border-radius: 8px;
+        border: none;
+        cursor: pointer;
+        padding: 0;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    }
+    
+    .hamburger-menu span {
+        display: block;
+        width: 22px !important; /* PERBAIKAN: ukuran konsisten */
+        height: 2px !important;
+        background: white;
+        margin: 2px auto !important; /* PERBAIKAN: spacing lebih baik */
+        transition: 0.3s;
+    }
+    
+    .hamburger-menu.active span:nth-child(1) {
+        transform: rotate(-45deg) translate(-5px, 6px);
+    }
+    
+    .hamburger-menu.active span:nth-child(2) {
+        opacity: 0;
+    }
+    
+    .hamburger-menu.active span:nth-child(3) {
+        transform: rotate(45deg) translate(-5px, -6px);
+    }
+    
+    /* Stats grid jadi 2 kolom */
+    .stats-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 15px !important;
+    }
+    
+    /* Cards grid jadi 1 kolom */
+    .cards-grid {
+        grid-template-columns: 1fr !important;
+    }
+}
+
+/* MOBILE: Stats jadi 1 kolom */
+@media (max-width: 767px) {
+    .stats-grid {
+        grid-template-columns: 1fr !important;
+    }
+    
+    h1 {
+        font-size: 24px !important;
+    }
+    
+    .content {
+        padding: 80px 15px 30px !important;
+    }
+}
+
+/* ============================================================================
+   ADMIN TABLES - Horizontal scroll dengan shadow indicator
+   ============================================================================ */
+@media (max-width: 1023px) {
+    .table-wrapper {
+        overflow-x: auto !important;
+        overflow-y: visible !important;
+        -webkit-overflow-scrolling: touch;
+        position: relative;
+        border-radius: 12px;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.08) !important;
+    }
+    
+    /* Gradient shadow kiri/kanan untuk indikator scroll */
+    .table-wrapper::before,
+    .table-wrapper::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        width: 30px;
+        z-index: 2;
+        pointer-events: none;
+    }
+    
+    .table-wrapper::before {
+        left: 0;
+        background: linear-gradient(to right, rgba(255,255,255,0.9), transparent);
+    }
+    
+    .table-wrapper::after {
+        right: 0;
+        background: linear-gradient(to left, rgba(255,255,255,0.9), transparent);
+    }
+    
+    table {
+        min-width: 800px !important; /* Tetap ada min-width tapi di dalam scroll container */
+    }
+    
+    /* Compress table content untuk mobile */
+    th, td {
+        padding: 10px 8px !important;
+        font-size: 13px !important;
+    }
+    
+    .action-buttons {
+        flex-direction: column !important;
+        gap: 5px !important;
+    }
+    
+    .btn-edit, .btn-delete, .btn-detail, .btn-status {
+        padding: 6px 12px !important;
+        font-size: 12px !important;
+        width: 100%;
+        text-align: center;
+    }
+}
+
+/* ============================================================================
+   ADMIN MODALS - Full screen di mobile
+   ============================================================================ */
+@media (max-width: 767px) {
+    .modal-content {
+        width: 95% !important;
+        max-width: 95% !important;
+        padding: 25px 20px !important;
+        max-height: 90vh !important;
+        overflow-y: auto !important;
+    }
+    
+    .modal-content h3 {
+        font-size: 20px !important;
+    }
+    
+    .modal-content input,
+    .modal-content textarea,
+    .modal-content select {
+        font-size: 16px !important; /* Prevent zoom on iOS */
+    }
+}
+
+/* ============================================================================
+   NAVBAR - Responsive menu untuk user pages (UPDATED)
+   File: index.php, about.php, tour.php, order.php, contact.php, status.php
+   ============================================================================ */
+@media (max-width: 1023px) {
+    .navbar {
+        padding: 12px 20px !important;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: nowrap;
+        gap: 15px;
+    }
+    
+    /* Logo dan user info di kiri */
+    .navbar-left {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        flex: 1;
+        min-width: 0; /* Untuk ellipsis */
+    }
+    
+    /* 🆕 Logo lebih kecil */
+    .logo, .logo-about, .logo-contact, .logo-order, .logo-status, .logo-tour {
+        font-size: 18px !important;
+        white-space: nowrap;
+    }
+    
+    /* Menu jadi hamburger */
+    .menu, .menu-about, .menu-contact, .menu-order, .menu-status, .menu-tour {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 280px;
+        height: 100vh;
+        background: rgba(44, 62, 80, 0.98);
+        backdrop-filter: blur(10px);
+        flex-direction: column !important;
+        padding: 70px 25px 25px !important;
+        gap: 15px !important;
+        z-index: 10000;
+        transition: right 0.3s ease;
+        box-shadow: -4px 0 15px rgba(0,0,0,0.3);
+    }
+    
+    .menu.active, .menu-about.active, .menu-contact.active, 
+    .menu-order.active, .menu-status.active, .menu-tour.active {
+        right: 0;
+    }
+    
+    .menu a, .menu-about a, .menu-contact a, 
+    .menu-order a, .menu-status a, .menu-tour a {
+        font-size: 16px !important;
+        padding: 12px 15px !important;
+        color: white !important;
+        border-radius: 6px;
+        display: block;
+        text-align: left !important;
+        transition: background 0.3s;
+    }
+    
+    .menu a:hover, .menu-about a:hover, .menu-contact a:hover,
+    .menu-order a:hover, .menu-status a:hover, .menu-tour a:hover {
+        background: rgba(255,255,255,0.1);
+    }
+    
+    /* Hamburger menu di pojok kanan */
+    .mobile-menu-toggle {
+        display: flex !important;
+        width: 40px !important;
+        height: 40px !important;
+        padding: 8px !important;
+        background: transparent !important;
+        border: 2px solid #2c3e50 !important;
+        border-radius: 8px;
+        cursor: pointer;
+        z-index: 10001;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 5px;
+        margin-left: 10px;
+        flex-shrink: 0;
+    }
+    
+    .mobile-menu-toggle span {
+        display: block;
+        position: relative !important; /* PERBAIKAN: tidak absolute */
+        width: 22px !important;
+        height: 2px !important;
+        background: currentColor;
+        border-radius: 2px;
+        transition: 0.3s;
+        left: 0 !important;
+        top: auto !important;
+        bottom: auto !important;
+    }
+
+    .mobile-menu-toggle.active span:nth-child(1) {
+        transform: rotate(45deg) translate(3px, 3px);
+    }
+    
+    .mobile-menu-toggle.active span:nth-child(2) {
+        opacity: 0;
+    }
+    
+    .mobile-menu-toggle.active span:nth-child(3) {
+        transform: rotate(-45deg) translate(3px, -3px);
+    }
+    
+    /* 🆕 Nav buttons - COMPLETELY REWRITTEN */
+    .nav-btns {
+        display: flex !important;
+        flex-direction: row !important; /* PERBAIKAN: horizontal */
+        align-items: center;
+        gap: 8px !important;
+        margin-top: 0 !important;
+        margin-left: auto;
+        width: auto !important; /* PERBAIKAN: tidak full width */
+    }
+    
+    /* 🆕 Username tetap horizontal di samping logo */
+    #userName {
+        font-size: 13px !important;
+        white-space: nowrap;
+        margin-right: 8px !important;
+        color: #333 !important; /* Pastikan visible */
+    }
+    
+    /* 🆕 Tombol lebih compact */
+    .nav-btns .btn {
+        padding: 6px 12px !important; /* PERBAIKAN: lebih kecil */
+        font-size: 12px !important;
+        width: auto !important;
+        white-space: nowrap;
+        border-radius: 6px !important;
+        text-align: center;
+    }
+}
+
+/* 🆕 Mobile very small - Tombol masuk hamburger */
+@media (max-width: 480px) {
+    .nav-btns {
+        display: flex !important;
+        flex-direction: row !important;
+        align-items: center;
+        gap: 8px !important;
+        margin: 0 !important;
+        padding: 0 !important;
+    }
+    
+    
+    /* Show ketika menu active */
+    .menu.active ~ .nav-btns,
+    .menu-about.active ~ .nav-btns,
+    .menu-contact.active ~ .nav-btns,
+    .menu-order.active ~ .nav-btns,
+    .menu-status.active ~ .nav-btns,
+    .menu-tour.active ~ .nav-btns {
+        transform: translateX(0);
+    }
+    
+    .nav-btns .btn {
+        padding: 6px 10px !important;
+        font-size: 11px !important;
+        white-space: nowrap;
+        border-radius: 6px !important;
+        min-width: auto !important;
+    }
+    
+    /* Dark mode toggle compact */
+    .dark-mode-toggle {
+        width: 32px !important;
+        height: 32px !important;
+        padding: 8px !important;
+        margin: 0 !important;
+    }
+
+    /* Username tetap di navbar */
+    #userName {
+        position: relative !important;
+        background: transparent !important;
+        padding: 0 !important;
+        color: #eee !important;
+        font-size: 12px !important;
+        margin-right: 5px !important;
+    }
+}
+
+/* ============================================================================
+   2. HAMBURGER MENU - Posisi dan ukuran lebih rapi
+   ============================================================================ */
+@media (max-width: 1023px) {
+    .mobile-menu-toggle {
+        width: 40px !important;
+        height: 40px !important;
+        padding: 8px !important;
+        display: flex !important;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 5px;
+        background: transparent !important;
+        border: 2px solid currentColor !important;
+        border-radius: 8px;
+        position: relative;
+        margin-left: auto;
+    }
+    
+    .mobile-menu-toggle span {
+        width: 22px !important;
+        height: 2px !important;
+        position: relative !important;
+        left: 0 !important;
+        top: auto !important;
+        bottom: auto !important;
+    }
+    
+    /* Menu dengan padding yang lebih baik */
+    .menu.active, .menu-about.active, .menu-contact.active,
+    .menu-order.active, .menu-status.active, .menu-tour.active {
+        padding: 70px 25px 25px !important;
+    }
+    
+    .menu a, .menu-about a, .menu-contact a,
+    .menu-order a, .menu-status a, .menu-tour a {
+        padding: 12px 15px !important;
+        display: block;
+        text-align: left !important;
+        border-radius: 6px;
+    }
+}
+
+/* ============================================================================
+   HOMEPAGE (index.php) - Hero & Cards
+   ============================================================================ */
+@media (max-width: 1023px) {
+    .hero {
+        padding: 80px 30px 60px !important;
+        min-height: auto !important;
+        height: auto !important;
+    }
+    
+    .title {
+        font-size: 42px !important;
+        padding-left: 0 !important;
+    }
+    
+    .hero .small-text,
+    .hero .desc {
+        padding-left: 0 !important;
+    }
+    
+    .hero .desc {
+        width: 100% !important;
+        max-width: 100% !important;
+    }
+    
+    .action {
+        margin-left: 0 !important;
+        display: block;
+        text-align: center;
+        width: fit-content;
+        margin: 20px auto 0 !important;
+    }
+    
+    /* Facta cards stack */
+    .card-container {
+        flex-direction: column !important;
+        align-items: center;
+    }
+    
+    .card {
+        width: 100% !important;
+        max-width: 400px !important;
+    }
+}
+
+@media (max-width: 767px) {
+    .title {
+        font-size: 32px !important;
+    }
+    
+    .hero .small-text {
+        font-size: 16px !important;
+    }
+    
+    .hero .desc {
+        font-size: 16px !important;
+    }
+    
+    .facta-section h2 {
+        font-size: 24px !important;
+    }
+}
+
+/* ============================================================================
+   ABOUT PAGE - Grid images (2 kolom di tablet)
+   ============================================================================ */
+@media (max-width: 1023px) {
+    .about-section {
+        padding: 60px 30px !important;
+    }
+    
+    .main-row {
+        flex-direction: column !important;
+        gap: 40px !important;
+    }
+    
+    .left-col, .right-col {
+        width: 100% !important;
+        padding-top: 0 !important;
+    }
+    
+    /* PERBAIKAN: Image grid jadi 2 kolom */
+    .img-grid {
+        display: grid !important;
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 12px !important;
+        width: 100%;
+    }
+    
+    .img-grid img {
+        width: 100% !important;
+        height: 160px !important; /* PERBAIKAN: tinggi konsisten */
+        object-fit: cover;
+        border-radius: 8px;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        transition: transform 0.3s;
+    }
+    
+    .img-grid img:hover {
+        transform: scale(1.02);
+    }
+    
+    /* Reset grid area */
+    .img-grid img:nth-child(1),
+    .img-grid img:nth-child(2),
+    .img-grid img:nth-child(3),
+    .img-grid img:nth-child(4) {
+        grid-column: auto !important;
+        grid-row: auto !important;
+        justify-self: stretch !important;
+        align-self: stretch !important;
+    }
+    
+    /* Wisata cards 2 kolom */
+    .grid-wisata {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 20px !important;
+    }
+    
+    .wisata-card:nth-child(4) {
+        grid-column: span 1 !important;
+    }
+}
+
+@media (max-width: 767px) {
+    .about-section h2 {
+        font-size: 24px !important;
+    }
+    
+    /* PERBAIKAN: Image grid jadi 1 kolom di mobile */
+    .img-grid {
+        grid-template-columns: 1fr !important;
+    }
+    
+    .img-grid img {
+        height: 180px !important;
+    }
+    
+    .grid-wisata {
+        grid-template-columns: 1fr !important;
+    }
+    
+    .wisata-merapi {
+        padding: 60px 20px !important;
+    }
+}
+
+/* ============================================================================
+   TOUR PAGE - Card grid PERBAIKAN (2 kolom di tablet)
+   ============================================================================ */
+@media (max-width: 1200px) {
+    .card-container-tour {
+        grid-template-columns: repeat(3, 1fr) !important;
+    }
+}
+
+@media (max-width: 1023px) {
+    .main-tour-bg {
+        padding-top: 80px !important;
+    }
+    
+    .hero-tour {
+        margin-top: 60px !important;
+        font-size: 24px !important;
+        padding: 0 20px;
+    }
+    
+    /* PERBAIKAN: Grid jadi 2 kolom di tablet */
+    .card-container-tour {
+        grid-template-columns: repeat(2, 1fr) !important;
+        width: 95% !important;
+        gap: 20px !important;
+        display: grid !important;
+    }
+    
+    /* PERBAIKAN: Card tour ukuran konsisten */
+    .card-tour {
+        display: flex;
+        flex-direction: column;
+        height: 100% !important;
+        background: white;
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+        transition: all 0.3s;
+    }
+    
+    /* Hover effect */
+    .card-tour:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+    }
+    
+    /* Gambar proporsional */
+    .card-tour img {
+        width: 100% !important;
+        height: 180px !important; /* PERBAIKAN: tinggi konsisten */
+        object-fit: cover;
+        display: block;
+    }
+    
+    /* Konten card */
+    .card-content {
+        padding: 15px;
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .card-tour h3 {
+        font-size: 16px !important;
+        margin: 0 0 8px 0 !important;
+        color: #2c3e50;
+        font-weight: 600;
+        line-height: 1.3;
+    }
+    
+    .card-tour p {
+        font-size: 13px !important;
+        line-height: 1.5 !important;
+        color: #666;
+        margin-bottom: 15px !important;
+        flex: 1;
+    }
+    
+    /* PERBAIKAN: Tombol Pesan lebih kecil & proporsional */
+    .card-tour .btn,
+    .card-tour .btn-reserve,
+    .card-tour a.btn {
+        display: inline-block !important;
+        padding: 8px 20px !important; /* PERBAIKAN: padding proporsional */
+        font-size: 13px !important;
+        background: linear-gradient(135deg, #f0393d 0%, #d6282c 100%);
+        color: white;
+        text-decoration: none;
+        border-radius: 6px !important;
+        font-weight: 500;
+        text-align: center;
+        transition: all 0.3s;
+        border: none;
+        cursor: pointer;
+        width: auto !important; /* PERBAIKAN: tidak melebar */
+        max-width: 120px;
+        margin: 0 auto !important; /* PERBAIKAN: rata tengah */
+        margin-top: auto !important;
+    }
+    
+    .card-tour .btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 15px rgba(240, 57, 61, 0.3);
+    }
+    
+    /* Rating dan harga */
+    .tour-price {
+        font-size: 14px !important;
+        font-weight: 700;
+        color: #f0393d;
+        margin-bottom: 10px;
+    }
+    
+    .tour-rating {
+        font-size: 12px !important;
+        color: #f39c12;
+        margin-bottom: 10px;
+    }
+}
+
+@media (max-width: 767px) {
+    /* PERBAIKAN: Grid jadi 1 kolom di mobile */
+    .card-container-tour {
+        grid-template-columns: 1fr !important;
+        max-width: 400px;
+        margin: 0 auto;
+    }
+    
+    .card-tour {
+        max-width: 100%;
+    }
+    
+    .card-tour img {
+        height: 160px !important;
+    }
+    
+    .card-tour h3 {
+        font-size: 15px !important;
+    }
+    
+    .card-tour p {
+        font-size: 12px !important;
+    }
+    
+    .card-tour .btn {
+        padding: 7px 16px !important;
+        font-size: 12px !important;
+        max-width: 110px;
+    }
+}
+/* ============================================================================
+   ORDER PAGE - Form layout (UPDATED)
+   ============================================================================ */
+@media (max-width: 1023px) {
+    .order-section {
+        padding: 80px 20px 60px !important;
+    }
+    
+    .container {
+        padding: 20px 18px !important; /* 🆕 PERBAIKAN: lebih compact */
+    }
+    
+    .form-row {
+        flex-direction: column !important;
+    }
+    
+    .form-group {
+        margin-right: 0 !important;
+        margin-bottom: 15px !important;
+    }
+    
+    /* 🆕 Checkbox dan label dalam satu baris - FIXED */
+    .tour-option {
+        display: flex !important;
+        flex-direction: row !important; /* PERBAIKAN: horizontal */
+        align-items: center !important;
+        gap: 10px !important;
+        padding: 8px 0;
+    }
+    
+    .tour-option input[type="checkbox"] {
+        width: 18px !important; /* 🆕 PERBAIKAN: lebih kecil */
+        height: 18px !important;
+        min-width: 18px !important;
+        flex-shrink: 0;
+        margin: 0 !important;
+    }
+    
+    .tour-option label {
+        flex: 1;
+        margin: 0 !important;
+        font-size: 14px !important;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    
+    .tour-price {
+        margin-left: 0 !important;
+        font-size: 13px !important;
+        white-space: nowrap;
+    }
+    
+    /* 🆕 Form fields lebih compact */
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+        padding: 10px 12px !important;
+        font-size: 14px !important;
+    }
+    
+    .form-group label {
+        font-size: 13px !important;
+        margin-bottom: 4px !important;
+    }
+}
+
+@media (max-width: 767px) {
+    .order-section h1 {
+        font-size: 28px !important;
+    }
+    
+    .order-section p {
+        font-size: 14px !important;
+    }
+    
+    input, textarea, select {
+        font-size: 16px !important; /* Prevent iOS zoom */
+    }
+    
+    .tour-option {
+        padding: 6px 0 !important;
+    }
+    
+    .tour-option label {
+        font-size: 13px !important;
+        flex-wrap: nowrap;
+    }
+    
+    .tour-price {
+        font-size: 12px !important;
+    }
+}
+
+/* ============================================================================
+   CONTACT PAGE - Form card
+   ============================================================================ */
+@media (max-width: 1023px) {
+    .kontak-section {
+        padding: 80px 20px 60px !important;
+    }
+    
+    .contact-card {
+        padding: 25px 20px !important;
+    }
+}
+
+@media (max-width: 767px) {
+    .kontak-section h1 {
+        font-size: 28px !important;
+    }
+    
+    .kontak-section p {
+        font-size: 14px !important;
+    }
+}
+
+/* ============================================================================
+   STATUS PAGE - Status box
+   ============================================================================ */
+@media (max-width: 1023px) {
+    .status-container {
+        margin: 100px auto !important;
+        padding: 20px !important;
+    }
+    
+    .status-box {
+        padding: 25px 20px !important;
+    }
+}
+
+@media (max-width: 767px) {
+    .status-container h1 {
+        font-size: 26px !important;
+    }
+    
+    .level {
+        font-size: 18px !important;
+        padding: 8px 18px !important;
+    }
+    
+    .desc {
+        font-size: 14px !important;
+    }
+}
+
+/* ============================================================================
+   MY ORDER PAGE - Order cards
+   ============================================================================ */
+@media (max-width: 1023px) {
+    .order-container {
+        padding: 0 20px;
+    }
+    
+    .order-card {
+        padding: 20px !important;
+    }
+}
+
+@media (max-width: 767px) {
+    body {
+        padding: 30px 15px !important;
+    }
+    
+    .page-title {
+        font-size: 32px !important;
+    }
+    
+    .order-header {
+        font-size: 20px !important;
+    }
+    
+    .order-info {
+        font-size: 14px !important;
+    }
+    
+    .card-buttons {
+        flex-direction: column !important;
+    }
+    
+    .btn {
+        width: 100% !important;
+        justify-content: center !important;
+    }
+}
+
+/* ============================================================================
+   🆕 TABEL MODAL DETAIL (my_order.php) - NO SCROLL NEEDED
+   ============================================================================ */
+@media (max-width: 1023px) {
+    /* Modal detail body */
+    #detailBody {
+        font-size: 13px !important;
+        overflow-x: hidden !important; /* NO SCROLL */
+    }
+    
+    #detailBody table {
+        width: 100% !important;
+        font-size: 11px !important;
+        border-collapse: collapse;
+        display: table !important;
+    }
+    
+    #detailBody th {
+        padding: 6px 4px !important;
+        font-size: 10px !important;
+        white-space: nowrap;
+        background: #f0393d !important;
+        color: white !important;
+    }
+    
+    #detailBody td {
+        padding: 6px 4px !important;
+        font-size: 11px !important;
+        word-wrap: break-word;
+        max-width: 100px;
+    }
+    
+    /* Kolom destinasi bisa wrap */
+    #detailBody td:first-child {
+        max-width: 120px !important;
+        word-wrap: break-word;
+    }
+    
+    /* Kolom harga & qty lebih kecil */
+    #detailBody td:nth-child(2),
+    #detailBody td:nth-child(3) {
+        max-width: 60px !important;
+        text-align: right;
+    }
+    
+    /* Kolom subtotal */
+    #detailBody td:nth-child(4) {
+        max-width: 70px !important;
+        text-align: right;
+        font-weight: 600;
+    }
+    
+    /* Total row */
+    #detailBody tr:last-child td {
+        font-weight: 700 !important;
+        font-size: 12px !important;
+        background: #f8f9fa !important;
+    }
+}
+
+@media (max-width: 767px) {
+    .modal-box {
+        padding: 20px 15px !important;
+    }
+    
+    .modal-title {
+        font-size: 18px !important;
+        margin-bottom: 15px !important;
+    }
+    
+    #detailBody {
+        font-size: 12px !important;
+    }
+    
+    #detailBody table {
+        font-size: 10px !important;
+    }
+    
+    #detailBody th,
+    #detailBody td {
+        padding: 5px 3px !important;
+    }
+    
+    #detailBody th {
+        font-size: 9px !important;
+    }
+    
+    #detailBody td {
+        font-size: 10px !important;
+    }
+}
+
+/* ============================================================================
+   🆕 INVOICE PAGE - Tabel tidak melebar, lebih menciut
+   ============================================================================ */
+@media (max-width: 1023px) {
+    .invoice-box {
+        padding: 25px 18px !important;
+        margin: 20px auto !important;
+        max-width: 100% !important;
+    }
+    
+    .invoice-box h1 {
+        font-size: 24px !important;
+        margin-bottom: 8px !important;
+    }
+    
+    .invoice-box h3 {
+        font-size: 16px !important;
+        margin-top: 20px !important;
+        margin-bottom: 10px !important;
+    }
+
+    .invoice-box p {
+        font-size: 13px !important;
+        line-height: 1.6 !important;
+        margin-bottom: 6px !important;
+    }
+    
+    .invoice-box p strong {
+        min-width: 100px !important;
+        font-size: 13px !important;
+    }
+    
+    /* Tabel invoice lebih compact */
+    .invoice-box .table {
+        font-size: 11px !important;
+        margin-top: 10px !important;
+        width: 100% !important;
+        display: table !important;
+    }
+    
+    .invoice-box .table th {
+        padding: 8px 6px !important;
+        font-size: 10px !important;
+        white-space: nowrap;
+    }
+    
+    .invoice-box .table td {
+        padding: 8px 6px !important;
+        font-size: 11px !important;
+        word-wrap: break-word;
+    }
+    
+    /* Destinasi bisa wrap */
+    .invoice-box .table td:first-child {
+        max-width: 140px;
+        word-wrap: break-word;
+    }
+    
+    /* Kolom harga */
+    .invoice-box .table td:nth-child(2),
+    .invoice-box .table td:nth-child(3) {
+        text-align: right;
+        white-space: nowrap;
+    }
+    
+    /* Kolom subtotal */
+    .invoice-box .table td:nth-child(4) {
+        text-align: right;
+        font-weight: 600;
+    }
+    
+    /* Status box */
+    .status-box {
+        padding: 10px !important;
+        font-size: 13px !important;
+        margin-top: 15px !important;
+    }
+    
+    /* Button download */
+    .btn-download {
+        width: 100% !important;
+        max-width: 280px !important;
+        padding: 11px 20px !important;
+        font-size: 14px !important;
+        margin: 20px auto 10px !important;
+    }
+}
+
+@media (max-width: 767px) {
+    body {
+        padding: 15px 10px !important;
+    }
+    
+    .invoice-box {
+        padding: 20px 15px !important;
+        margin: 10px auto !important;
+        border-radius: 8px !important;
+    }
+    
+    .invoice-box h1 {
+        font-size: 20px !important;
+    }
+    
+    .invoice-box h3 {
+        font-size: 15px !important;
+        margin-top: 15px !important;
+    }
+    
+    .invoice-box p {
+        font-size: 12px !important;
+    }
+    
+    .invoice-box p strong {
+        min-width: 85px !important;
+        font-size: 12px !important;
+    }
+    
+    .invoice-box .table {
+        font-size: 10px !important;
+    }
+    
+    .invoice-box .table th,
+    .invoice-box .table td {
+        padding: 6px 4px !important;
+        font-size: 10px !important;
+    }
+    
+    .invoice-box .table td:first-child {
+        max-width: 100px !important;
+    }
+    
+    .status-box {
+        padding: 8px !important;
+        font-size: 12px !important;
+    }
+
+    .info-item {
+        font-size: 13px !important;
+    }
+    .btn-download {
+        padding: 10px 18px !important;
+        font-size: 13px !important;
+
+        width: 100% !important;
+    }
+    
+    .section-box > p[style*="font-size:24px"] {
+        font-size: 20px !important;
+    }
+}
+
+@media (max-width: 480px) {
+    .invoice-box {
+        padding: 18px 12px !important;
+    }
+    
+    .invoice-box .table th,
+    .invoice-box .table td {
+        padding: 5px 3px !important;
+        font-size: 9px !important;
+    }
+    
+    .invoice-box .table td:first-child {
+        max-width: 80px !important;
+    }
+}
+
+
+/* ============================================================================
+   RECEIPT MODAL - Full screen on mobile
+   ============================================================================ */
+@media (max-width: 767px) {
+    .receipt-container {
+        width: 100% !important;
+        max-width: 100% !important;
+        height: 100% !important;
+        max-height: 100% !important;
+        border-radius: 0 !important;
+    }
+    
+    .receipt-content {
+        padding: 30px 20px !important;
+    }
+    
+    .receipt-buttons {
+        padding: 0 20px 20px !important;
+        flex-direction: column !important;
+    }
+    
+    .receipt-buttons button {
+        width: 100% !important;
+    }
+}
+
+/* ============================================================================
+   ORDER PROCESS SUCCESS PAGE - Responsive container
+   ============================================================================ */
+@media (max-width: 767px) {
+    .success-container {
+        padding: 45px 25px !important;
+        border-radius: 16px !important;
+    }
+    
+    h1 {
+        font-size: 30px !important;
+    }
+    
+    .order-id-value {
+        font-size: 26px !important;
+    }
+    
+    .button-group {
+        flex-direction: column !important;
+    }
+    
+    .btn {
+        width: 100% !important;
+        justify-content: center !important;
+    }
+    
+    .footer-info {
+        flex-direction: column !important;
+        text-align: center !important;
+    }
+}
+
+/* ============================================================================
+   3. MODAL LOGIN/REGISTER - Ukuran lebih kecil di mobile
+   ============================================================================ */
+@media (max-width: 767px) {
+    .modal-content {
+        width: 90% !important;
+        max-width: 340px !important;
+        padding: 25px 20px !important;
+        max-height: 85vh !important;
+        overflow-y: auto !important;
+    }
+    
+    .modal-content h2 {
+        font-size: 22px !important;
+        margin-bottom: 15px !important;
+    }
+    
+    .modal-content .form-group {
+        margin-bottom: 14px !important;
+    }
+    
+    .modal-content .form-group label {
+        font-size: 13px !important;
+        margin-bottom: 4px !important;
+    }
+    
+    .modal-content .form-group input {
+        padding: 10px 12px !important;
+        font-size: 14px !important;
+    }
+    
+    .modal-content .toggle-password {
+        top: 38px !important;
+        width: 20px !important;
+        height: 20px !important;
+        right: 12px !important;
+    }
+    
+    .modal-content .submit-btn {
+        padding: 11px !important;
+        font-size: 15px !important;
+    }
+    
+    .modal-content .form-footer {
+        font-size: 13px !important;
+        margin-top: 12px !important;
+    }
+    
+    .modal-content .close-btn {
+        font-size: 22px !important;
+        right: 15px !important;
+        top: 15px !important;
+    }
+}
+
+@media (max-width: 480px) {
+    .modal-content {
+        width: 95% !important;
+        max-width: 320px !important;
+        padding: 20px 18px !important;
+    }
+}
+
+/* ============================================================================
+   FOOTER - Stack columns on mobile
+   ============================================================================ */
+@media (max-width: 1023px) {
+    .footer-merapi {
+        padding: 40px 30px 20px !important;
+    }
+    
+    .footer-container {
+        flex-direction: column !important;
+        text-align: center !important;
+        gap: 30px !important;
+    }
+    
+    .footer-column {
+        flex: 1 1 100% !important;
+    }
+}
+
+/* ============================================================================
+   DARK MODE COMPATIBILITY - Ensure responsive works with dark mode
+   ============================================================================ */
+body.dark-mode .table-wrapper::before {
+    background: linear-gradient(to right, rgba(42, 47, 58, 0.9), transparent) !important;
+}
+
+body.dark-mode .table-wrapper::after {
+    background: linear-gradient(to left, rgba(42, 47, 58, 0.9), transparent) !important;
+}
+
+body.dark-mode .menu, 
+body.dark-mode .menu-about, 
+body.dark-mode .menu-contact,
+body.dark-mode .menu-order, 
+body.dark-mode .menu-status,
+body.dark-mode .menu-tour {
+    background: rgba(36, 40, 48, 0.98) !important;
+}
+
+body.dark-mode .nav-btns {
+    background: rgba(36, 40, 48, 0.98) !important;
+}
+
+body.dark-mode #detailBody table th {
+    background: #383e4a !important;
+}
+
+body.dark-mode #detailBody table td {
+    background: #2f3541 !important;
+    color: #b8bdc6 !important;
+}
+
+body.dark-mode .invoice-box {
+    background: #2a2f3a !important;
+    color: #b8bdc6 !important;
+}
+
+body.dark-mode .invoice-box h1,
+body.dark-mode .invoice-box h3 {
+    color: #f0f2f5 !important;
+}
+
+body.dark-mode .invoice-box .table th {
+    background: #383e4a !important;
+}
+
+body.dark-mode .invoice-box .table td {
+    color: #b8bdc6 !important;
+    border-bottom-color: #3d4350 !important;
+}
+
+/* ============================================================================
+   UTILITY: Hide desktop-only elements on mobile
+   ============================================================================ */
+@media (max-width: 1023px) {
+    .desktop-only {
+        display: none !important;
+    }
+}
+
+/* ============================================================================
+   UTILITY: Show mobile-only elements
+   ============================================================================ */
+.mobile-only {
+    display: none !important;
+}
+
+@media (max-width: 1023px) {
+    .mobile-only {
+        display: block !important;
+    }
+
+    body, html {
+        overflow-x: hidden !important;
+        max-width: 100vw !important;
+    }
+    
+    * {
+        max-width: 100% !important;
+    }
+    
+    table {
+        max-width: 100% !important;
+    }
+    
+    img {
+        max-width: 100% !important;
+        height: auto !important;
+    }
+}
+
+/* ============================================================================
+   PERFORMANCE: Reduce animations on mobile for better performance
+   ============================================================================ */
+@media (max-width: 767px) {
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+    
+    /* Keep critical animations */
+    .fade-up, .fade-up-delay, .fade-up-delay2, .fade-up-delay3,
+    .modal.active, .sidebar, .menu {
+        animation-duration: 0.3s !important;
+        transition-duration: 0.3s !important;
+    }
+}
+
+/* ============================================================================
+   ACCESSIBILITY: Touch-friendly tap targets (min 44x44px)
+   ============================================================================ */
+@media (max-width: 1023px) {
+    a, button, input[type="checkbox"], input[type="radio"], .btn {
+        min-height: 44px;
+        min-width: 44px;
+    }
+    
+    .btn, .btn-edit, .btn-delete, .btn-detail, .btn-status,
+    .btn-primary, .btn-secondary, .btn-reserve {
+        padding: 12px 20px !important;
+    }
+}
+
+/* ============================================================================
+   FIX: Prevent body scroll when modal/sidebar active
+   ============================================================================ */
+body.modal-open,
+body.sidebar-open {
+    overflow: hidden !important;
+}
+
+/* ============================================================================
+   END OF RESPONSIVE FIXES
+   ============================================================================ */

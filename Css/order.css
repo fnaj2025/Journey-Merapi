@@ -1,0 +1,335 @@
+/* ============================================================
+   ORDER PAGE (ORDER.HTML)
+   ============================================================ */
+
+/* SECTION UTAMA */
+.order-section {
+    text-align: center;
+    padding: 60px 20px 80px;
+    background-color: white;
+    color: #222;
+    transition: background-color 0.4s, color 0.4s;
+    margin-top: 60px;
+}
+
+.order-section h1 {
+    font-size: 2.3em;
+    margin-bottom: 15px;
+    font-style: italic;
+}
+
+.order-section h1 span {color: #ff4444;}
+
+.order-section p {
+    max-width: 700px;
+    margin: 0 auto 40px;
+    font-size: 1.05em;
+    line-height: 1.6;
+    font-weight: 400;
+}
+
+/* FORM CONTAINER */
+.container {
+    max-width:800px;
+    margin:0 auto;
+    background-color:#f5f5f5;
+    padding:30px;
+    border-radius:8px;
+    box-shadow:0 0 10px rgba(0,0,0,0.1);
+}
+
+.section-title {
+    font-weight:bold;
+    margin-bottom:15px;
+    font-size:18px;
+    color:var(--text);
+}
+
+/* TOUR OPTION */
+.tour-option {
+    display:flex;
+    align-items:center;
+    margin-bottom:10px;
+    padding:10px;
+    border-radius:4px;
+    transition: background-color 0.2s;
+}
+
+.tour-option:hover {
+    background-color:white;
+}
+
+.tour-option input {
+    margin-right:10px;
+    width:auto;
+}
+
+.tour-option label {
+    color:var(--text);
+}
+
+.tour-price {
+    font-weight:bold;
+    color:#2c3e50;
+    margin-left:auto;
+}
+
+/* SELECTED TOUR LIST */
+.selected-tours {
+    background-color:#f0f8ff;
+    padding:15px;
+    border-radius:4px;
+    margin-top:15px;
+    border-left:4px solid #2c3e50;
+}
+
+.selected-tours h3 {
+    margin-bottom:10px;
+    color:#2c3e50;
+}
+
+.no-selection {
+    color:#777;
+    font-style:italic;
+}
+
+.selected-tour-item {
+    display:flex;
+    justify-content:space-between;
+    padding:5px 0;
+    border-bottom:1px dashed #1d3d53;
+    color:var(--text);
+}
+
+.selected-tour-item:last-child {
+    border-bottom:none;
+}
+
+/* TOTAL PRICE */
+.total-price {
+    font-weight:bold;
+    font-size:18px;
+    margin-top:10px;
+    padding-top:10px;
+    border-top:2px solid #2c3e50;
+    display:flex;
+    justify-content:space-between;
+    color:var(--text);
+}
+
+/* FORM FIELD */
+.form-section {margin-bottom:25px;}
+
+.form-row {
+    display:flex;
+    flex-wrap:wrap;
+    margin-bottom:15px;
+}
+
+.form-group {
+    flex:1;
+    min-width:200px;
+    margin-right:15px;
+    margin-bottom:15px;
+}
+
+.form-group:last-child {margin-right:0;}
+
+label {
+    display:block;
+    margin-bottom:5px;
+    font-weight:bold;
+}
+
+input,
+textarea,
+select {
+    width:100%;
+    padding:10px;
+    border:1px solid var(--input-border);
+    border-radius:4px;
+    background:var(--input-bg);
+    color:var(--text);
+}
+
+textarea {
+    height:100px;
+    resize:vertical;
+}
+
+/* BUTTON RESERVE */
+.btn-reserve {
+    display:block;
+    width:100%;
+    padding:12px;
+    background-color:var(--red);
+    color:white;
+    border:none;
+    border-radius:10px;
+    font-size:16px;
+    font-weight:bold;
+    cursor:pointer;
+    margin-top:20px;
+    transition: background-color 0.3s;
+}
+
+.btn-reserve:hover {
+    background-color:#1a252f;
+}
+
+/* ============================================================
+   RECEIPT MODAL (STRUK)
+   ============================================================ */
+
+.receipt-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: 10000;
+    justify-content: center;
+    align-items: center;
+}
+
+.receipt-modal.active {
+    display: flex;
+}
+
+.receipt-container {
+    background: white;
+    max-width: 600px;
+    width: 90%;
+    max-height: 90vh;
+    overflow-y: auto;
+    border-radius: 12px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+    position: relative;
+}
+
+.receipt-content {
+    padding: 40px;
+}
+
+.receipt-header {
+    text-align: center;
+    border-bottom: 2px dashed #333;
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+}
+
+.receipt-header h2 {
+    margin: 0;
+    font-size: 28px;
+    color: #333;
+}
+
+.receipt-header h2 span {
+    color: var(--red);
+}
+
+.receipt-header .booking-id {
+    font-size: 14px;
+    color: #666;
+    margin-top: 10px;
+}
+
+.receipt-header .booking-date {
+    font-size: 12px;
+    color: #999;
+    margin-top: 5px;
+}
+
+.receipt-section {
+    margin-bottom: 20px;
+}
+
+.receipt-section h3 {
+    font-size: 16px;
+    color: #333;
+    margin-bottom: 10px;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 5px;
+}
+
+.receipt-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 0;
+    font-size: 14px;
+}
+
+.receipt-row.tour-item {
+    border-left: 3px solid #ff6b35;
+    padding-left: 10px;
+    margin-bottom: 8px;
+}
+
+.receipt-row .label {
+    color: #666;
+    font-weight: 500;
+}
+
+.receipt-row .value {
+    color: #333;
+    font-weight: 600;
+    text-align: right;
+}
+
+.receipt-total {
+    border-top: 2px solid #333;
+    margin-top: 20px;
+    padding-top: 15px;
+}
+
+.receipt-total .receipt-row {
+    font-size: 18px;
+    font-weight: 700;
+    color: #2c5f2d;
+}
+
+.receipt-footer {
+    text-align: center;
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 2px dashed #333;
+    font-size: 12px;
+    color: #666;
+}
+
+.receipt-buttons {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+    padding: 0 40px 30px 40px;
+}
+
+.receipt-buttons button {
+    flex: 1;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.btn-print {
+    background: #2c5f2d;
+    color: white;
+}
+
+.btn-print:hover {
+    background: #1f4320;
+}
+
+.btn-close-receipt {
+    background: #e0e0e0;
+    color: #333;
+}
+
+.btn-close-receipt:hover {
+    background: #d0d0d0;
+}
